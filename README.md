@@ -1,15 +1,15 @@
 # 🔔 GoogleBot Nginx Telegram Notifier 
 
-Get notification on Telegram if GoogleBot visit your website.
+Get notification on Telegram if a beacon hits your redirector.
 
 ## 💡 How does it work?
 
-Using `tail` and `grep` to monitor the nginx log file. Once it matches the word "GoogleBot" it'll immediately send notification to your telegram
+Using `tail` and `grep` to monitor the nginx log file. Once it matches the indentification header it'll immediately send notification to your telegram
 
 
 ## 🔧 Script Setup
 
-- Download the [GoogleBot.sh](https://github.com/mcnaveen/GoogleBot-Nginx-Telegram-Notifier/blob/main/GoogleBot.sh) file on your linux server in `root` or `home` (Home Recommended)
+- Download the [RedirectorBot.sh](https://github.com/NoelAlgora/Redirector-Nginx-Telegram-Notifier/blob/main/RedirectorBot.sh) file on your linux server in `root` or `home` (Home Recommended)
 
 - Open the file and add these values (Required) (Get Chat ID from here - <https://t.me/chatidx_bot>)
 
@@ -30,27 +30,27 @@ logFile=/var/log/nginx/access.log #Path to your Nginx access log file. (This one
 cd /etc/systemd/system
 
 # Create New Service File
-touch gbotnotify.service
+touch rbotnotify.service
 
 # Create a Service file for systemd service
-nano gbotnotify.service
+nano rbotnotify.service
 
 ```
 
-- Now paste everything from <https://github.com/mcnaveen/GoogleBot-Nginx-Telegram-Notifier/blob/main/gbotnotify.service> and save it.
+- Now paste everything from <https://github.com/NoelAlgora/Redirector-Nginx-Telegram-Notifier/blob/main/rbotnotify.service> and save it.
 
-- Reload the systemd and enable the gbotnotify service
+- Reload the systemd and enable the rbotnotify service
 
 ```bash
 systemctl daemon-reload
-systemctl enable gbotnotify
-systemctl start gbotnotify
+systemctl enable rbotnotify
+systemctl start rbotnotify
 ```
 
 - You can Check the service status with
 
 ```bash
-systemctl status gbotnotify
+systemctl status rbotnotify
 ```
 
 ## ☑ LICENSE 
