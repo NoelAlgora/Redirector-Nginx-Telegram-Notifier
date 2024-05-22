@@ -7,20 +7,19 @@
 
 apiKey= PASTE YOUR TELEGRAM API KEY HERE
 chatID= PASTE YOUR TELEGRAM CHAT ID HERE
-
 headerIdentifier="cd9452d3-9540-492d-b57b-7be28c4d2d29"
-
 message="Redirector HIT" # You can set your custom message here
-
 logFile=/var/log/nginx/access.log # This is default nginx log path. You can replace the path according to your setup
+notified_ips="127.0.0.1"
 
 tail -fn0 $logFile | \
 while read line ; do
-        echo "$line" | grep "Googlebot"
+        echo "$line" | grep "$headerIdentifier" | grep -vE "$notified_ips"
         if [ $? = 0 ]
         then
           incoming_ip=`echo "$line" | awk '{printf $1}'`
           redirector_host=`echo "$line" | awk '{printf $3}'`
+          notified_ips="$notified_ips|$incoming_ip"
           curl --silent --output /dev/null \
           -X POST \
            "https://api.telegram.org/bot$apiKey/sendMessage" \
