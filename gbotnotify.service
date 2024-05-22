@@ -1,12 +1,12 @@
 [Unit]
-Description= Monitor GoogleBot Crawls and Send notification to Telegram
+Description= Monitor HTTP Redirector and Send notification to Telegram
 Requires=network.target
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/root
-ExecStart=/bin/bash /home/root/GoogleBot.sh
+ExecStart=/bin/bash /home/root/RedirectorBot.sh
 Restart=always
 RestartSec=3
 
