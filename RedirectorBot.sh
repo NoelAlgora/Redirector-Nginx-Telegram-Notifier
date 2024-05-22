@@ -5,11 +5,10 @@
 # Github: https://github.com/mcnaveen/GoogleBot-Nginx-Telegram-Notifier
 # Note: Your server should be Nginx. Otherwise it won't work.
 
-apiKey= PASTE YOUR TELEGRAM API KEY HERE
-chatID= PASTE YOUR TELEGRAM CHAT ID HERE
-headerIdentifier="cd9452d3-9540-492d-b57b-7be28c4d2d29"
-message="Redirector HIT" # You can set your custom message here
-logFile=/var/log/nginx/access.log # This is default nginx log path. You can replace the path according to your setup
+apiKey="PASTE_YOUR_TELEGRAM_API_KEY_HERE"
+chatID="PASTE_YOUR_TELEGRAM_CHAT_ID_HERE"
+headerIdentifier="UNIQUE_IDENTIFIER"
+logFile="/var/log/nginx/access.log" # This is default nginx log path. You can replace the path according to your setup
 notified_ips="127.0.0.1"
 
 tail -fn0 $logFile | \
